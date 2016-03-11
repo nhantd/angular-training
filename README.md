@@ -1,4 +1,8 @@
-# Full Stack Training - Angular Lab
+Resources from: indieforger.com
+
+
+
+# Full Stack Training - Angular Lab 
 
 ## Training documentation
 
