@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<p><input ng-model="url" type="text" /></p>
+
+<div ng-init ="url ='angular_js.svg'"></div>
+<p><img src="http://paislee.io/content/images/2014/Aug/{{url}}" /></p>
+
+<p>url: {{url}}</p>
+<p><img ng-src="{{url ? https://angular.io/resources/images/logos/angular2/url}}" /></p>
+<!-- <p><img ng-src="http://paislee.io/content/images/2014/Aug/{{url}}" /></p> -->
+
+<script src="../../bower_components/angular/angular.js"></script>
+</body>
+</html>

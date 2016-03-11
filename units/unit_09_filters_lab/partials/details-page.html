@@ -1,0 +1,24 @@
+<h2>{{detailsCtrl.title}}</h2>
+
+<h3 ng-if="detailsCtrl.error">{{detailsCtrl.error}}</h3>
+
+<ul ng-repeat="film in detailsCtrl.films">
+	<li><b>{{film.title}}</b> by: {{film.director}}</li>
+</ul>
+
+Detail of a fillm:
+<ul ng-repeat="film in detailsCtrl.afilm">
+{{film.title}} - {{film.plot}} -{{film.cast}}
+</ul>
+
+<ul ng-repeat="actor in detailsCtrl.actors">
+
+<p><b>{{ actor.height }}</b> in height2foot is: <b> {{ actor.height | convertHigh:'inch' }} </b> with html filter</p>
+<!-- <p><b>{{ myCtrl.text }}</b> in reverse is: <b> {{ myCtrl.reversedText }} </b> with controller filter</p> -->
+</ul>
+
+
+Filter result:
+<ul ng-repeat="film in detailsCtrl.films |filterName: 'V'">
+{{film.title}} -{{film.cast}}
+</ul>

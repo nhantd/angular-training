@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="utf-8">
+	<style>
+		.odd { color: blue; }
+		.even { color: green; }
+	</style>
+	<script src="../../bower_components/angular/angular.js"></script>
+	<script>
+
+		angular.module('myApp', []);
+		angular
+			.module('myApp')
+			.controller('MyController', function ($scope) {
+				$scope.greaterThan = function(prop, val){
+			    return function(item){
+			      return item[prop] > val;
+			    }
+				}
+			});
+
+	</script>
+
+</head>
+<body>
+
+
+<div ng-init="rebels = [
+    { name: 'Tamas', age: 31, hobby: 'waterpolo', colour: 'blue' },
+	{ name: 'Simon', age: 35, hobby: 'travel', colour: 'green' },
+	{ name: 'Mark', age: 36, hobby: 'animals', colour: 'grey' },
+	{ name: 'Susan', age: 19, hobby: '', colour: 'red' },
+	{ name: 'Anna', age: 45, hobby: 'cooking', colour: '' },
+	{ name: 'Steve', age: 18, hobby: 'football', colour: 'red' },
+	{ name: 'Dave', age: 12, hobby: 'lego', colour: 'blue' },
+	{ name: 'Maria', age: 28, hobby: 'tennis', colour: 'pink' }
+];"></div>
+<ul>
+	<li ng-repeat="item in rebels"
+	    ng-class="{even: $even, odd: $odd}">
+
+			name : {{item.name ? item.name:'N/A'| uppercase}} , age : {{item.age ? item.age:'N/A'}} , hobby : {{item.hobby ? item.hobby:'N/A'}} , colour : {{item.colour ? item.colour:'N/A'}}
+	</li>
+</ul>
+
+Search the hobbies: <input type="text" ng-model="searchText">
+<div>{{searchText | json}}</div>
+<div> <input type="checkbox" ng-model="checked" ng-init="checked=false">Age greater than 30? </div>
+<div>{{checked | json}}</div>
+
+<ul ng-controller="MyController">
+	</li>
+	<li ng-repeat="item in rebels | filter: {hobby: searchText}"
+			ng-class="{even: $even, odd: $odd}"
+			ng-if="checked==false">
+			name : {{item.name ? item.name:'N/A'| uppercase}} , age : {{item.age ? item.age:'N/A'}} , hobby : {{item.hobby ? item.hobby:'N/A' | filter: hobbies}} , colour : {{item.colour ? item.colour:'N/A'}}
+	<li ng-repeat="item in rebels | filter: greaterThan('age',30)"
+			ng-if="checked==true"
+			ng-class="{even: $even, odd: $odd}">
+			name : {{item.name ? item.name:'N/A'| uppercase}} , age : {{item.age ? item.age:'N/A'}} , hobby : {{item.hobby ? item.hobby:'N/A' | filter: hobbies}} , colour : {{item.colour ? item.colour:'N/A'}}
+	</li>
+</ul>
+<!-- <ul>
+<li ng-repeat="item in rebels | filter: {hobby: searchText}">
+
+		<span
+		ng-if="checked==false" ng-class="{even: $even, odd: $odd}">
+		name : {{item.name ? item.name:'N/A'| uppercase}} , age : {{item.age ? item.age:'N/A'}} , hobby : {{item.hobby ? item.hobby:'N/A' | filter: hobbies}} , colour : {{item.colour ? item.colour:'N/A'}}
+	</span>
+	<span
+	ng-if="checked==true" ng-hide="item.age<30" ng-class="{even: $even, odd: $odd}">
+	name : {{item.name ? item.name:'N/A'| uppercase}} , age : {{item.age ? item.age:'N/A'}} , hobby : {{item.hobby ? item.hobby:'N/A' | filter: hobbies}} , colour : {{item.colour ? item.colour:'N/A'}}
+	</span>
+</li>
+<ul> -->
+
+<p>Please select a name:
+	<select ng-model="query"
+					ng-options="item.name group by item.hobby for item in rebels | orderBy: [ 'name']" >
+		<option value="">Select a rebel</option>
+	</select>
+</p>
+<div>
+	<select ng-model="selectedRebel1"
+	        ng-options="rebel.name for rebel in rebels">
+
+		<option value="" selected="selected">Select the rebel</option>
+	</select>
+	<pre>{{selectedRebel1}}</pre>
+</div>
+
+</select>
+
+</body>
+</html>

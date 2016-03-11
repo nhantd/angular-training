@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<body>
+<h1>My first routing page</h1>
+
+<p>
+	<a href="#/">Home</a> |
+	<a href="#/details">#/details</a> |
+	<a href="#/page/1">#/page/1</a> |
+	<a href="#/page/2">#/page/2</a> |
+	<a href="#/page/3">#/page/3</a> |
+	<a href="#/broken">#/broken</a>
+</p>
+
+<hr />
+<div ng-view></div>
+
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="../../bower_components/angular-route/angular-route.js"></script>
+<script src="./app/app.module.js"></script>
+<script src="./app/detail.controller.js"></script>
+<script src="./app/actor.service.js"></script>
+<script src="./app/films.service.js"></script>
+<script src="./app/app.js"></script>
+</body>
+</html>

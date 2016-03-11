@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<script src="../../bower_components/angular/angular.js"></script>
+<style>
+div { border: 1px solid grey; margin: 10px; padding: 10px; }
+</style>
+<script>
+angular.module('myApp', []);
+
+angular
+	.module('myApp')
+	.controller('FirstController', FirstController)
+	.controller('SecondController', SecondController);
+
+function FirstController($scope) {
+	this.rebel = 'Luke Skywalker';
+}
+
+function SecondController($scope) {
+	$scope.rebel = 'Ben Kenobi';
+}
+
+</script>
+</head>
+<body>
+
+<div ng-controller="FirstController">
+	<h4>First Controller</h4>
+	<p>rebel: {{rebel}}</p>
+
+	<div ng-controller="SecondController">
+		<h4>Second Controller</h4>
+		<p>second controller rebel: {{rebel}}</p>
+		<p>first controller rebel: <b>{{FirstController.rebel}}</b></p>
+	</div>
+</div>
+
+</body>
+</html>

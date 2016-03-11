@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<script src="../../bower_components/angular/angular.js"></script>
+<script>
+(function() {
+	angular
+			.module('myApp', [])
+			.controller('FilterController', FilterController)
+			.filter('height2foot', height2foot);
+
+	function FilterController(filterFilter){
+		this.actors = [{"name":"Mark Hamill","bio":"Mark Richard Hamill was born in Oakland, California, to Virginia Suzanne (Johnson) and William Thomas Hamill, a captain in the United States Navy. He grew up in California, Virginia, New York and Japan. He majored in drama at Los Angeles City College and made his acting debut on The Bill Cosby Show (1969) in 1970.","dob":"1951-09-25","pob":"Concord, California, USA","height":1.75},
+		{
+		  "name": "Harrison Ford",
+		  "bio": "Harrison Ford was born on July 13, 1942 in Chicago, Illinois, to Dorothy (Nidelman), a radio actress, and Christopher Ford (born John William Ford), an actor turned advertising executive. His father had Irish and German ancestry, and his maternal grandparents were Jewish immigrants from the Russian Empire.",
+		  "dob": "1942-07-13",
+		  "pob": "Chicago, Illinois, USA",
+		  "height": 1.85
+		}]
+
+		this.filteredArray = filterFilter(this.actors, {name: 'or'});
+	}
+	function height2foot() {
+		return function(height, param){
+			if (param =='inch'){
+				return 0.393701*height;
+			}
+			else if (param =='foot'){
+				return 0.0328084*height;
+			}
+			else{
+				return height;
+			}
+		}
+	}
+})()
+</script>
+</head>
+<body ng-controller="FilterController as myCtrl">
+<ul ng-repeat="actor in myCtrl.actors">
+
+<p><b>{{ actor.height }}</b> in height2foot is: <b> {{ actor.height | height2foot:'inch' }} </b> with html filter</p>
+<!-- <p><b>{{ myCtrl.text }}</b> in reverse is: <b> {{ myCtrl.reversedText }} </b> with controller filter</p> -->
+</ul>
+
+<div>
+		Entries that contain an "or":
+	<span ng-repeat="entry in myCtrl.filteredArray">{{entry.name}} </span>
+</div>
+</body></html>

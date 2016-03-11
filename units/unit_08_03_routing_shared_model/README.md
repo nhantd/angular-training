@@ -1,0 +1,1 @@
+example inspired by article: [the state of angularjs controllers](http://jonathancreamer.com/the-state-of-angularjs-controllers/)

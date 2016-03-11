@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="utf-8">
+	<style>
+		.odd { color: blue; }
+		.even { color: green; }
+	</style>
+</head>
+<body>
+
+<div ng-init="rebels = [
+    { name: 'Tamas', age: 31, hobby: 'waterpolo', colour: 'blue' },
+	{ name: 'Simon', age: 35, hobby: 'travel', colour: 'green' },
+	{ name: 'Mark', age: 36, hobby: 'animals', colour: 'grey' },
+	{ name: 'Susan', age: 19, hobby: '', colour: 'red' },
+	{ name: 'Anna', age: 45, hobby: 'cooking', colour: '' },
+	{ name: 'Steve', age: 18, hobby: 'football', colour: 'red' },
+	{ name: 'Dave', age: 12, hobby: 'lego', colour: 'blue' },
+	{ name: 'Maria', age: 28, hobby: 'tennis', colour: 'pink' }
+];"></div>
+<ul>
+	<li ng-repeat="item in rebels"
+	    ng-class="{even: $even, odd: $odd}">
+			name : {{item.name ? item.name:'N/A'}} , age : {{item.age ? item.age:'N/A'}} , hobby : {{item.hobby ? item.hobby:'N/A'}} , colour : {{item.colour ? item.colour:'N/A'}}
+	</li>
+</ul>
+
+<div>
+	<select ng-model="selectedRebel1"
+	        ng-options="rebel.name for rebel in rebels">
+
+		<option value="" selected="selected">Select the rebel</option>
+	</select>
+	<pre>{{selectedRebel1}}</pre>
+</div>
+
+</select>
+
+<script src="../../bower_components/angular/angular.js"></script>
+</body>
+</html>

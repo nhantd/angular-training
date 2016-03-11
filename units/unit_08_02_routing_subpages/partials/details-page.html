@@ -1,0 +1,7 @@
+<h2>{{detailsCtrl.title}}</h2>
+
+<h3 ng-if="detailsCtrl.error">{{detailsCtrl.error}}</h3>
+
+<ul ng-repeat="film in detailsCtrl.films">
+	<li><b>{{film.title}}</b> by: {{film.director}}</li>
+</ul>

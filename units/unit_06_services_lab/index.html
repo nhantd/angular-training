@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="./app/app.module.js"></script>
+<script src="./app/controller.js"></script>
+<script src="./app/filmFactory.js"></script>
+<script src="./app/oneFilmFactory.js"></script>
+<script src="./app/app.js"></script>
+
+</head>
+<body>
+<div ng-controller="FilmController">
+	<ul>
+		{{actor.name }} - {{actor.dob | date: 'dd/MMMM/yyyy'}}
+	</ul>
+	<ul>
+		<li ng-repeat="film in films">
+			{{ film.title }}
+		</li>
+	</ul>
+
+</div>
+</body>
+</html>
